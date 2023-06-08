@@ -27,7 +27,7 @@
                       "$ref": "#/components/schemas/GetIdByEmail"
                     },
                     {
-                      "$ref": "#/components/schemas/UpdatePassowrd"
+                      "$ref": "#/components/schemas/UpdatePassword"
                     }
                   ]
                 }
@@ -38,7 +38,18 @@
             "200": {
               "description": "OK",
               "content": {
-                
+                "application/json":{
+                  "schema":{
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/GetIdByEmailRes"
+                      },
+                      {
+                        "$ref": "#/components/schemas/UpdatePasswordRes"
+                      }
+                    ]
+                  }
+                }
               }
             }
           }
@@ -47,7 +58,7 @@
     },
     "components": {
       "schemas": {
-        "UpdatePassowrd": {
+        "UpdatePassword": {
           "type": "object",
           "properties": {
             "query": {
@@ -56,12 +67,55 @@
             }
           }
         },
+        "UpdatePasswordRes": {
+          "type": "object",
+          "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "updatePassword": {
+                    "type": "object",
+                    "properties": {
+                      "authID": {
+                        "type": "number",
+                        "example": 5
+                      },
+                    "password": {
+                      "type":"string",
+                      "example": "passwordbarunich"
+                    }
+                    }
+                  }
+                }
+              }
+            
+          }
+        },
         "GetIdByEmail": {
           "type": "object",
           "properties": {
             "query": {
               "type": "string",
               "example": "query{ getUidByEmail(email:\"adrianji1945@gmail.com\"){ authID }}"
+            }
+          }
+        },
+        "GetIdByEmailRes": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "properties": {
+                "getUidByEmail": {
+                  "type": "object",
+                  "properties": {
+                    "authID": {
+                      "type": "number",
+                      "example": 5
+                    }
+                  }
+                }
+              }
             }
           }
         }
