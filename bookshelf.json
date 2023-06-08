@@ -24,10 +24,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/GetIdByEmail"
+                      "$ref": "#/components/schemas/GetIdByEmailReq"
                     },
                     {
-                      "$ref": "#/components/schemas/UpdatePassword"
+                      "$ref": "#/components/schemas/UpdatePasswordReq"
                     }
                   ]
                 }
@@ -58,7 +58,7 @@
     },
     "components": {
       "schemas": {
-        "UpdatePassword": {
+        "UpdatePasswordReq": {
           "type": "object",
           "properties": {
             "query": {
@@ -91,7 +91,7 @@
             
           }
         },
-        "GetIdByEmail": {
+        "GetIdByEmailReq": {
           "type": "object",
           "properties": {
             "query": {
