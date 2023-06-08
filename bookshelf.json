@@ -1,77 +1,71 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Dokumentasi TSGDAILY",
-    "version": "1.0.0",
-    "description": "Dokumentasi api tsgdaily"
-  },
-  "servers": [
-    {
-      "url": "https://auth-tsgdaily.tsgitdev.com"
-    }
-  ],
-  "paths": {
-    "/auth": {
-      "post": {
-        "tags": [
-          "AuthModules"
-        ],
-        "summary": "/auth",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "#/components/schemas/GetIdByEmail"
-                  },
-                  {
-                    "$ref": "#/components/schemas/UpdatePassowrd"
-                  }
-                ]
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Dokumentasi TSGDAILY",
+      "version": "1.0.0",
+      "description": "Dokumentasi api tsgdaily"
+    },
+    "servers": [
+      {
+        "url": "https://auth-tsgdaily.tsgitdev.com"
+      }
+    ],
+    "paths": {
+      "/auth": {
+        "post": {
+          "tags": [
+            "AuthModules"
+          ],
+          "summary": "/auth",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GetIdByEmail"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UpdatePassowrd"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                
               }
             }
           }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "UpdatePassowrd": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "example": "mutation { updatePassword(id: 5, password: \"passwordbaru\") { authID password } }"
+    },
+    "components": {
+      "schemas": {
+        "UpdatePassowrd": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "example": "mutation { updatePassword(id: 5, password: \"passwordbaru\") { authID password } }"
+            }
           }
-        }
-      },
-      "GetIdByEmail": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "object",
-            "properties": {
-              "getUidByEmail": {
-                "type": "object",
-                "properties": {
-                  "authID": {
-                    "type": "integer",
-                    "example": 5
-                  }
-                }
-              }
+        },
+        "GetIdByEmail": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "example": "query{ getUidByEmail(email:\"adrianji1945@gmail.com\"){ authID }}"
             }
           }
         }
       }
     }
   }
-}
+  
