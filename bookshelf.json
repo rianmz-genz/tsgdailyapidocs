@@ -51,14 +51,6 @@
             "type": "string",
             "example": "mutation { updatePassword(id: 5, password: \"passwordbaru\") { authID password } }"
           }
-        },
-        "example": {
-            "data": {
-              "updatePassword": {
-                "authID": 5,
-                "password": "passwordbarunich"
-              }
-            }
         }
       },
       "GetIdByEmail": {
@@ -76,13 +68,6 @@
                   }
                 }
               }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "getUidByEmail": {
-              "authID": 5
             }
           }
         }
