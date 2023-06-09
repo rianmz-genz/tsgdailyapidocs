@@ -128,7 +128,8 @@
         "properties": {
           "query": {
             "type": "string",
-            "example": "mutation { updatePassword(id: 5, password: \"passwordbaru\") { authID password } }"
+            "description": "Petik 1 diganti petik 2",
+            "example": "mutation { updatePassword(id: 5, password: 'passwordbaru') { authID password } }"
           }
         }
       },
@@ -161,7 +162,8 @@
         "properties": {
           "query": {
             "type": "string",
-            "example": "query{ getUidByEmail(email:\"adrianji1945@gmail.com\"){ authID }}"
+            "description": "Petik 1 diganti petik 2",
+            "example": "query{ getUidByEmail(email: 'adrianji1945@gmail.com'){ authID }}"
           }
         }
       },
