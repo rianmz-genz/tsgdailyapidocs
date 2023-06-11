@@ -104,7 +104,16 @@
           "required": true,
           "content": {
             "application/json": {
-              
+              "schema":{
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GetAllPostReq"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GetDetailPostReq"
+                    }
+                  ]
+                }
             }
           }
         },
@@ -113,7 +122,14 @@
             "description": "OK",
             "content": {
               "application/json":{
-                
+                "schema":{
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GetAllPostRes"
+                    }
+                   
+                  ]
+                }
               }
             }
           }
@@ -123,6 +139,140 @@
   },
   "components": {
     "schemas": {
+      "GetAllPostReq": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "example": "query{ post{ comments{ commentat content user{ name badge email profilePic thumbnail username } } content hashtags{ name } hashtags{ name } medias{ type value } user{ name badge email profilePic thumbnail username } reactions{ helpful like userID user{ name badge email profilePic thumbnail username }}}}"
+          }
+        }
+      },
+      "GetAllPostRes": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "post": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string",
+                      "example": "Postingan 1"
+                    },
+                    "postID": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "comments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                      "properties": {
+                        "commentat":{
+                          "type": "string",
+                          "example": "2023-05-03 08:54:20.169346 +0000 UTC"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "Comment di postingan 1"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "badge": {
+                              "type": "string",
+                              "example": "newbie"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "adrianji1945@gmail.com"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Adrian Aji Septa"
+                            },
+                            "username": {
+                              "type": "string",
+                              "example": "rianmz27"
+                            }
+                          }
+                        }
+                      }
+                      }
+                    },
+                    "medias": {
+                      "type": "array",
+                      "items":{
+                        "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "image"
+                        },
+                        "value": {
+                          "type": "string",
+                          "example": "data:image/jpeg;base64,/stringbas64"
+                        }
+                      }
+                      }
+                    },
+                    "reactions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "helpful": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "like": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "badge": {
+                                "type": "string",
+                                "example": "newbie"
+                              },
+                              "email": {
+                                "type": "string",
+                                "example": "adrianji1945@gmail.com"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Adrian Aji Septa"
+                              },
+                              "username": {
+                                "type": "string",
+                                "example": "rianmz27"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }   
+              }
+            }
+          }
+        }
+      },
+      "GetDetailPostReq": {
+        "type": "object",
+        "properties": {
+          "query":{
+            "type": "string",
+            "example": "query { getOnePost(postID: 24){comments {content user{badge email name profilePic thumbnail userID} commentat} hashtags{ name } medias{ type value} pinned point postID userID reactions{ helpful like user{name username profilePic }}view} }"
+          }
+        }
+      },
       "UpdatePasswordReq": {
         "type": "object",
         "properties": {
